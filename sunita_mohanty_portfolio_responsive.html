@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sunita Mohanty</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0a0a0a;--ink2:#2a2620;--muted:#7a756e;
+  --accent:#9e7a36;--accent2:#8e712c;
+  --cream:#faf8f4;--surface:#f3f0ea;--white:#fff;
+  --border:rgba(10,10,10,0.1);
+  --ff-d:'Playfair Display',Georgia,serif;
+  --ff-b:'DM Sans',system-ui,sans-serif;
+  --px:clamp(1.25rem,5vw,5rem);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-b);background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem var(--px);display:flex;align-items:center;justify-content:space-between;background:rgba(250,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--ff-d);font-weight:700;font-size:1.1rem;color:var(--ink);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:0.78rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{background:var(--ink);color:var(--white);padding:0.5rem 1.2rem;border-radius:2rem;font-size:0.76rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:background 0.2s}
+.nav-cta:hover{background:var(--accent);color:var(--ink)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.ham span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.3s}
+.mob-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--border);padding:1.5rem var(--px);z-index:199;flex-direction:column;gap:1.25rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:0.9rem;font-weight:500;color:var(--ink);text-decoration:none;letter-spacing:0.04em}
+.mob-cta{background:var(--ink)!important;color:var(--white)!important;padding:0.75rem 1.5rem;border-radius:2rem;text-align:center;font-weight:600!important;font-size:0.85rem!important;text-decoration:none}
+
+/* HERO */
+.hero{min-height:100svh;padding:90px var(--px) 4rem;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ff-d);font-size:40vw;font-weight:900;color:rgba(10,10,10,0.03);pointer-events:none;white-space:nowrap;z-index:0;line-height:1}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;max-width:1350px;width:100%;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--surface);border:1px solid var(--border);padding:0.35rem 1rem;border-radius:2rem;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#3ecf6b;flex-shrink:0}
+.hero-h1{font-family:var(--ff-d);font-size:clamp(2.2rem,4.5vw,4rem);font-weight:900;line-height:1.08;letter-spacing:-0.02em;margin-bottom:1.25rem}
+.hero-h1 em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:clamp(0.9rem,1.5vw,1rem);color:var(--muted);line-height:1.75;margin-bottom:2rem;max-width:460px}
+.hero-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--ink);color:var(--white);padding:0.8rem 1.75rem;border-radius:2rem;font-size:0.83rem;font-weight:600;letter-spacing:0.04em;text-decoration:none;transition:all 0.25s;display:inline-block;white-space:nowrap}
+.btn-primary:hover{background:var(--accent);color:var(--ink)}
+.btn-ghost{color:var(--ink);font-size:0.83rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;padding:0.8rem 1.5rem;border:1.5px solid var(--border);border-radius:2rem;transition:all 0.25s;white-space:nowrap}
+.btn-ghost:hover{border-color:var(--ink)}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap}
+.stat-num{font-family:var(--ff-d);font-size:1.8rem;font-weight:700;color:var(--ink);display:block;line-height:1}
+.stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase;margin-top:0.2rem}
+.hero-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2rem;width:100%;box-shadow:0 30px 60px rgba(10,10,10,0.07)}
+.hc-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--ink));display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-weight:700;font-size:1.2rem;color:var(--white);margin-bottom:1.25rem}
+.hc-name{font-family:var(--ff-d);font-size:1.2rem;font-weight:700;margin-bottom:0.2rem}
+.hc-role{font-size:0.75rem;color:var(--muted);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:1.25rem}
+.hc-skills{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem}
+.skill-pill{background:var(--surface);color:var(--ink2);font-size:0.7rem;font-weight:600;padding:0.3rem 0.75rem;border-radius:2rem}
+.skill-pill.accent{background:var(--ink);color:var(--white)}
+.hc-divider{border:none;border-top:1px solid var(--border);margin:1rem 0}
+.hc-avail{display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;color:var(--muted);font-weight:500}
+.pulse{width:8px;height:8px;border-radius:50%;background:#3ecf6b;flex-shrink:0;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(62,207,107,0.4)}50%{box-shadow:0 0 0 6px rgba(62,207,107,0)}}
+
+/* MARQUEE */
+.marquee-wrap{background:var(--ink);padding:0.85rem 0;overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-flex;animation:marquee 22s linear infinite}
+.marquee-inner span{font-size:0.73rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);padding:0 1.5rem}
+.marquee-inner .dot{color:rgba(255,255,255,0.2)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTIONS */
+section{padding:5rem var(--px)}
+.section-label{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem}
+.section-title{font-family:var(--ff-d);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;line-height:1.15;letter-spacing:-0.02em;margin-bottom:1.25rem}
+.section-sub{font-size:0.95rem;color:var(--muted);max-width:500px;line-height:1.75}
+.sec-center{text-align:center}
+.sec-center .section-sub{margin:0 auto}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center;max-width:1350px;margin:0 auto}
+.about-text p{font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:1.1rem}
+.about-text p strong{color:var(--ink);font-weight:600}
+.value-list{list-style:none;margin-top:1.75rem;display:flex;flex-direction:column;gap:0.85rem}
+.value-item{display:flex;align-items:center;gap:0.75rem;font-size:0.85rem;font-weight:500;color:var(--ink2)}
+.value-icon{width:30px;height:30px;background:var(--surface);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.9rem}
+.about-visual{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.av-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.5rem;text-align:center}
+.av-card.full{grid-column:1/-1}
+.av-big{font-family:var(--ff-d);font-size:2.2rem;font-weight:800;color:var(--ink);display:block}
+.av-label{font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);font-weight:600;margin-top:0.2rem}
+
+/* SERVICES */
+.services-bg{background:var(--ink)}
+.services-bg .section-title{color:var(--white)}
+.services-bg .section-label{color:var(--accent)}
+.services-bg .section-sub{color:rgba(255,255,255,0.45)}
+.services-inner{max-width:1350px;margin:0 auto}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
+.svc-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:1.75rem;transition:all 0.3s}
+.svc-card:hover{background:rgba(200,169,110,0.1);border-color:rgba(200,169,110,0.3);transform:translateY(-4px)}
+.svc-icon{font-size:1.75rem;margin-bottom:1rem;display:block}
+.svc-title{font-family:var(--ff-d);font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.6rem}
+.svc-desc{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.7}
+.svc-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:1rem}
+.svc-tag{font-size:0.65rem;font-weight:600;letter-spacing:0.05em;padding:0.22rem 0.65rem;border-radius:2rem;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.35)}
+
+/* WORK */
+.work-inner{max-width:1350px;margin:0 auto}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.work-card{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all 0.3s}
+.work-card:hover{transform:translateY(-5px);box-shadow:0 24px 50px rgba(10,10,10,0.09)}
+.work-card.featured{grid-column:1/-1}
+.wc-thumb{height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.wc-thumb.t1{background:linear-gradient(135deg,#1a1a2e,#16213e)}
+.wc-thumb.t2{background:linear-gradient(135deg,#0f3460,#533483)}
+.wc-thumb.t3{background:linear-gradient(135deg,#2d1b69,#c8a96e)}
+.featured .wc-thumb{height:240px}
+.wc-label{position:absolute;bottom:1rem;left:1rem;background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);color:white;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;padding:0.28rem 0.65rem;border-radius:2rem;text-transform:uppercase;border:1px solid rgba(255,255,255,0.15)}
+.wc-body{padding:1.35rem}
+.wc-tag{font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:0.4rem}
+.wc-title{font-family:var(--ff-d);font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem}
+.wc-desc{font-size:0.8rem;color:var(--muted);line-height:1.65}
+
+/* SKILLS */
+.skills-bg{background:var(--surface)}
+.skills-inner{max-width:1350px;margin:0 auto}
+.skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem}
+.skill-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1rem;text-align:center;transition:all 0.25s}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.sk-icon{font-size:1.6rem;margin-bottom:0.5rem;display:block}
+.sk-name{font-size:0.77rem;font-weight:600;color:var(--ink2)}
+.sk-level{font-size:0.63rem;color:var(--accent);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-top:0.2rem}
+
+/* QUOTE */
+.quote-section{text-align:center;padding:4rem var(--px)}
+.quote-mark{font-family:var(--ff-d);font-size:5rem;color:var(--accent);line-height:0.5;display:block;margin-bottom:1.25rem;opacity:0.4}
+.quote-text{font-family:var(--ff-d);font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:400;font-style:italic;color:var(--ink);max-width:620px;margin:0 auto 1.5rem;line-height:1.55}
+.quote-author{font-size:0.76rem;color:var(--muted);font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+
+/* CTA */
+.cta-section{background:var(--ink);padding:5rem var(--px);text-align:center;position:relative;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,169,110,0.12) 0%,transparent 70%);pointer-events:none}
+.cta-section .section-title{color:var(--white);max-width:580px;margin:0 auto 1.25rem}
+.cta-section .section-sub{color:rgba(255,255,255,0.45);margin:0 auto 2.5rem}
+.cta-actions{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap}
+.btn-gold{background:var(--accent);color:var(--ink);padding:0.9rem 2.25rem;border-radius:2rem;font-size:0.87rem;font-weight:700;letter-spacing:0.05em;text-decoration:none;transition:all 0.25s;display:inline-block;white-space:nowrap}
+.btn-gold:hover{background:var(--accent2);transform:translateY(-2px)}
+.btn-outline-wh{color:var(--white);font-size:0.85rem;font-weight:600;letter-spacing:0.04em;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;padding:0.9rem 1.75rem;border:1.5px solid rgba(255,255,255,0.2);border-radius:2rem;transition:all 0.25s;white-space:nowrap}
+.btn-outline-wh:hover{border-color:rgba(255,255,255,0.5)}
+.cta-contact{margin-top:2rem;font-size:0.8rem;color:rgba(255,255,255,0.3)}
+.cta-contact a{color:var(--accent);text-decoration:none}
+
+/* FOOTER */
+footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);padding:1.75rem var(--px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-logo{font-family:var(--ff-d);font-weight:700;font-size:0.95rem;color:var(--white)}
+.foot-logo span{color:var(--accent)}
+.foot-copy{font-size:0.72rem;color:rgba(255,255,255,0.28)}
+.foot-socials{display:flex;gap:1.25rem}
+.foot-socials a{font-size:0.7rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-decoration:none;transition:color 0.2s}
+.foot-socials a:hover{color:var(--accent)}
+
+/* FADE */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none}
+  .ham{display:flex}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{max-width:480px}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .work-grid{grid-template-columns:1fr}
+  .work-card.featured{grid-column:auto}
+  .skills-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+  :root{--px:1.25rem}
+  .hero{padding-top:75px;padding-bottom:3rem}
+  .hero-h1{font-size:clamp(2rem,9vw,2.8rem)}
+  .hero-stats{gap:1.25rem}
+  .stat-num{font-size:1.5rem}
+  .hero-actions{flex-direction:column;align-items:flex-start;gap:0.75rem}
+  .btn-primary,.btn-ghost{width:100%;text-align:center;justify-content:center}
+  .services-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .about-visual{grid-template-columns:1fr 1fr}
+  .cta-actions{flex-direction:column;align-items:center}
+  .btn-gold,.btn-outline-wh{width:100%;text-align:center;justify-content:center}
+  footer{flex-direction:column;text-align:center;gap:0.75rem}
+  .foot-socials{justify-content:center}
+  .quote-text{font-size:1.1rem}
+  .section-title{font-size:clamp(1.65rem,7vw,2.2rem)}
+  .featured .wc-thumb{height:180px}
+  .wc-thumb{height:150px}
+}
+@media(max-width:380px){
+  .hero-h1{font-size:1.9rem}
+  .skills-grid{grid-template-columns:1fr 1fr}
+  .about-visual{grid-template-columns:1fr}
+  .av-card.full{grid-column:auto}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">SM<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Talk</a>
+  <button class="ham" id="ham" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#work" onclick="closeMenu()">Work</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#contact" class="mob-cta" onclick="closeMenu()">Let's Talk</a>
+</div>
+
+<section class="hero">
+  <div class="hero-bg-text" aria-hidden="true">SM</div>
+  <div class="hero-inner">
+    <div class="fade-up">
+      <div class="hero-badge">Available for freelance &amp; full-time</div>
+      <h1 class="hero-h1">Design that <em>thinks,</em><br>code that delivers.</h1>
+      <p class="hero-sub">I'm Sunita Mohanty — a designer-developer hybrid who builds premium digital experiences that look stunning and perform flawlessly.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-ghost">Start a Project →</a>
+      </div>
+      <div class="hero-stats">
+        <div><span class="stat-num">4+</span><div class="stat-label">Years Experience</div></div>
+        <div><span class="stat-num">30+</span><div class="stat-label">Projects Delivered</div></div>
+        <div><span class="stat-num">10+</span><div class="stat-label">Skills Mastered</div></div>
+      </div>
+    </div>
+    <div class="fade-up" style="transition-delay:.15s">
+      <div class="hero-card">
+        <div class="hc-avatar">SM</div>
+        <div class="hc-name">Sunita Mohanty</div>
+        <div class="hc-role">UI/UX Designer &amp; Front-end Developer</div>
+        <div class="hc-skills">
+          <span class="skill-pill accent">React JS</span>
+          <span class="skill-pill">Angular JS</span>
+          <span class="skill-pill">Figma</span>
+          <span class="skill-pill accent">WordPress</span>
+          <span class="skill-pill">HTML/CSS/JS</span>
+          <span class="skill-pill">Canva</span>
+          <span class="skill-pill">AI Tools</span>
+        </div>
+        <hr class="hc-divider"/>
+        <div class="hc-avail"><span class="pulse"></span>Available for new opportunities</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>UI/UX Design</span><span class="dot">✦</span><span>Front-end Dev</span><span class="dot">✦</span><span>WordPress</span><span class="dot">✦</span><span>React JS</span><span class="dot">✦</span><span>Figma</span><span class="dot">✦</span><span>Responsive Websites</span><span class="dot">✦</span><span>Brand Identity</span><span class="dot">✦</span><span>Digital Experience</span><span class="dot">✦</span>
+    <span>UI/UX Design</span><span class="dot">✦</span><span>Front-end Dev</span><span class="dot">✦</span><span>WordPress</span><span class="dot">✦</span><span>React JS</span><span class="dot">✦</span><span>Figma</span><span class="dot">✦</span><span>Responsive Websites</span><span class="dot">✦</span><span>Brand Identity</span><span class="dot">✦</span><span>Digital Experience</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<section id="about" style="background:var(--cream)">
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <span class="section-label">About Me</span>
+      <h2 class="section-title">The rare mix of<br><em style="color:var(--accent)">design &amp; code.</em></h2>
+      <p>I'm a designer who codes and a developer who designs. That rare combination means I bridge the gap between beautiful visuals and functional products — <strong>no handoff friction, no lost design quality.</strong></p>
+      <p>Based in India, I work with startups, agencies, and businesses worldwide to build websites and digital experiences that convert visitors into clients.</p>
+      <ul class="value-list">
+        <li class="value-item"><span class="value-icon">✦</span>Design-to-code without quality loss</li>
+        <li class="value-item"><span class="value-icon">⚡</span>Fast, responsive, SEO-friendly builds</li>
+        <li class="value-item"><span class="value-icon">🎯</span>User-first thinking on every project</li>
+        <li class="value-item"><span class="value-icon">🤝</span>Clear communication, on-time delivery</li>
+      </ul>
+    </div>
+    <div class="about-visual fade-up" style="transition-delay:.15s">
+      <div class="av-card"><span class="av-big">100%</span><div class="av-label">Client Satisfaction</div></div>
+      <div class="av-card"><span class="av-big">30+</span><div class="av-label">Projects Built</div></div>
+      <div class="av-card full" style="background:var(--ink)">
+        <span class="av-big" style="color:var(--accent)">Design × Dev</span>
+        <div class="av-label" style="color:rgba(255,255,255,0.4)">Both under one roof</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services-bg">
+  <div class="services-inner">
+    <span class="section-label fade-up">What I Do</span>
+    <h2 class="section-title fade-up">Services built for<br>modern brands.</h2>
+    <p class="section-sub fade-up">From pixel-perfect UI designs to fully-coded, responsive websites — end-to-end digital solutions.</p>
+    <div class="services-grid fade-up">
+      <div class="svc-card">
+        <span class="svc-icon">🎨</span>
+        <div class="svc-title">UI/UX Design</div>
+        <p class="svc-desc">Wireframes, prototypes, and polished interfaces that guide users intuitively and leave lasting impressions.</p>
+        <div class="svc-tags"><span class="svc-tag">Figma</span><span class="svc-tag">Wireframing</span><span class="svc-tag">Prototyping</span></div>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">💻</span>
+        <div class="svc-title">Front-end Development</div>
+        <p class="svc-desc">Clean, fast, responsive code in HTML, CSS, JavaScript, React, and Angular — built to perform everywhere.</p>
+        <div class="svc-tags"><span class="svc-tag">React JS</span><span class="svc-tag">Angular</span><span class="svc-tag">JS</span></div>
+      </div>
+      <div class="svc-card">
+        <span class="svc-icon">🌐</span>
+        <div class="svc-title">WordPress Websites</div>
+        <p class="svc-desc">Custom WordPress sites that are easy to manage, visually stunning, and optimised for growth.</p>
+        <div class="svc-tags"><span class="svc-tag">WordPress</span><span class="svc-tag">Custom Themes</span><span class="svc-tag">SEO</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" style="background:var(--cream)">
+  <div class="work-inner">
+    <span class="section-label fade-up">Selected Work</span>
+    <h2 class="section-title fade-up">Projects that speak<br><em style="color:var(--accent)">for themselves.</em></h2>
+    <div class="work-grid">
+      <div class="work-card featured fade-up">
+        <div class="wc-thumb t1">
+          <span style="font-size:clamp(2.5rem,8vw,4rem);font-family:'Playfair Display',serif;font-weight:900;color:rgba(255,255,255,0.12);letter-spacing:-0.04em">UI/UX</span>
+          <span class="wc-label">Featured Project</span>
+        </div>
+        <div class="wc-body">
+          <div class="wc-tag">UI/UX Design + Development</div>
+          <div class="wc-title">Modern SaaS Dashboard — Full Design System</div>
+          <p class="wc-desc">End-to-end design and front-end build for a SaaS analytics platform. Designed in Figma, built with React JS.</p>
+        </div>
+      </div>
+      <div class="work-card fade-up" style="transition-delay:.1s">
+        <div class="wc-thumb t2">
+          <span style="font-size:2.5rem;font-family:'Playfair Display',serif;font-weight:900;color:rgba(255,255,255,0.1)">WP</span>
+          <span class="wc-label">WordPress</span>
+        </div>
+        <div class="wc-body">
+          <div class="wc-tag">WordPress Development</div>
+          <div class="wc-title">Premium Business Website for Creative Agency</div>
+          <p class="wc-desc">Custom WordPress site with advanced animations, full responsiveness, and SEO-optimised structure.</p>
+        </div>
+      </div>
+      <div class="work-card fade-up" style="transition-delay:.2s">
+        <div class="wc-thumb t3">
+          <span style="font-size:2.5rem;font-family:'Playfair Display',serif;font-weight:900;color:rgba(255,255,255,0.1)">Brand</span>
+          <span class="wc-label">Branding + UI</span>
+        </div>
+        <div class="wc-body">
+          <div class="wc-tag">Branding + UI Design</div>
+          <div class="wc-title">Brand Identity &amp; Landing Page — Startup</div>
+          <p class="wc-desc">Visual identity, logo design, and high-converting landing page for an early-stage tech startup.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="skills-bg">
+  <div class="skills-inner">
+    <span class="section-label fade-up">Toolkit</span>
+    <h2 class="section-title fade-up">Skills &amp; Technologies</h2>
+    <div class="skills-grid fade-up">
+      <div class="skill-card"><span class="sk-icon">⚛️</span><div class="sk-name">React JS</div><div class="sk-level">Advanced</div></div>
+      <div class="skill-card"><span class="sk-icon">🔷</span><div class="sk-name">Angular JS</div><div class="sk-level">Advanced</div></div>
+      <div class="skill-card"><span class="sk-icon">🎨</span><div class="sk-name">Figma</div><div class="sk-level">Expert</div></div>
+      <div class="skill-card"><span class="sk-icon">🌐</span><div class="sk-name">WordPress</div><div class="sk-level">Advanced</div></div>
+      <div class="skill-card"><span class="sk-icon">📄</span><div class="sk-name">HTML / CSS</div><div class="sk-level">Expert</div></div>
+      <div class="skill-card"><span class="sk-icon">✨</span><div class="sk-name">JavaScript</div><div class="sk-level">Advanced</div></div>
+      <div class="skill-card"><span class="sk-icon">🖌️</span><div class="sk-name">Canva</div><div class="sk-level">Expert</div></div>
+      <div class="skill-card"><span class="sk-icon">🤖</span><div class="sk-name">AI Tools</div><div class="sk-level">Proficient</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="quote-section fade-up">
+  <span class="quote-mark">"</span>
+  <p class="quote-text">Great design isn't just how it looks — it's how it works, how it feels, and how it makes people trust you.</p>
+  <div class="quote-author">— Sunita Mohanty, Design Philosophy</div>
+</div>
+
+<section id="contact" class="cta-section">
+  <div class="cta-bg" aria-hidden="true"></div>
+  <div style="position:relative;z-index:1">
+    <span class="section-label">Ready to Begin?</span>
+    <h2 class="section-title fade-up">Let's build something<br><em style="color:var(--accent)">remarkable.</em></h2>
+    <p class="section-sub fade-up">Whether you're a startup, agency, or brand ready for a digital upgrade — I'm here to make it happen.</p>
+    <div class="cta-actions fade-up">
+      <a href="mailto:dezy5720@gmail.com" class="btn-gold">Hire Me</a>
+      <a href="mailto:dezy5720@gmail.com" class="btn-outline-wh">Book a Consultation →</a>
+    </div>
+    <p class="cta-contact">Or reach me at <a href="mailto:dezy5720@gmail.com">dezy5720@gmail.com</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Sunita Mohanty<span>.</span></div>
+  <div class="foot-copy">© 2025 Sunita Mohanty. All rights reserved.</div>
+  <div class="foot-socials">
+    <a href="#">LinkedIn</a>
+    <a href="#">Behance</a>
+    <a href="#">GitHub</a>
+    <a href="#">Dribbble</a>
+  </div>
+</footer>
+
+<script>
+const ham=document.getElementById('ham'),mob=document.getElementById('mobMenu');
+ham.addEventListener('click',()=>{mob.classList.toggle('open')});
+function closeMenu(){mob.classList.remove('open')}
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
