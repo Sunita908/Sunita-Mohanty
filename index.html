@@ -9,7 +9,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --ink:#0a0a0a;--ink2:#2a2620;--muted:#7a756e;
-  --accent:#9e7a36;--accent2:#8e712c;
+  --accent:#9e7a36;--accent2:#874f00;
   --cream:#faf8f4;--surface:#f3f0ea;--white:#fff;
   --border:rgba(10,10,10,0.1);
   --ff-d:'Playfair Display',Georgia,serif;
@@ -53,9 +53,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1rem var(--px);displ
 .stat-num{font-family:var(--ff-d);font-size:1.8rem;font-weight:700;color:var(--ink);display:block;line-height:1}
 .stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase;margin-top:0.2rem}
 .hero-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:2rem;width:100%;box-shadow:0 30px 60px rgba(10,10,10,0.07)}
-.hc-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--ink));display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-weight:700;font-size:1.2rem;color:var(--white);margin-bottom:1.25rem}
-.hc-name{font-family:var(--ff-d);font-size:1.2rem;font-weight:700;margin-bottom:0.2rem}
-.hc-role{font-size:0.75rem;color:var(--muted);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:1.25rem}
+.hc-avatar{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--ink));display:flex;align-items:center;justify-content:center;font-family:var(--ff-d);font-weight:700;font-size:24px;color:var(--white);margin-bottom:1.25rem}
+.hc-name{font-family:var(--ff-d);font-size:22px;font-weight:800;margin-bottom:0.2rem}
+.hc-role{font-size:13px;color:var(--accent2);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:1.25rem}
 .hc-skills{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.5rem}
 .skill-pill{background:var(--surface);color:var(--ink2);font-size:0.7rem;font-weight:600;padding:0.3rem 0.75rem;border-radius:2rem}
 .skill-pill.accent{background:var(--ink);color:var(--white)}
@@ -109,7 +109,7 @@ section{padding:5rem var(--px)}
 
 /* WORK */
 .work-inner{max-width:1350px;margin:0 auto}
-.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
 .work-card{background:var(--white);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all 0.3s}
 .work-card:hover{transform:translateY(-5px);box-shadow:0 24px 50px rgba(10,10,10,0.09)}
 .work-card.featured{grid-column:1/-1}
@@ -204,12 +204,19 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);padding
   .about-visual{grid-template-columns:1fr}
   .av-card.full{grid-column:auto}
 }
+.nav-logo span{
+font-size: 18px;
+    background: linear-gradient(135deg, var(--accent), var(--ink));
+    padding: 12px;
+    border-radius: 50%;
+    color: #fff;
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">SM<span>.</span></a>
+  <a href="#" class="nav-logo"><span>SM</span>Sunita Mohanty</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -253,13 +260,15 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);padding
         <div class="hc-name">Sunita Mohanty</div>
         <div class="hc-role">UI/UX Designer &amp; Front-end Developer</div>
         <div class="hc-skills">
-          <span class="skill-pill accent">React JS</span>
-          <span class="skill-pill">Angular JS</span>
-          <span class="skill-pill">Figma</span>
+          <span class="skill-pill accent">Figma</span>
+          <span class="skill-pill">React JS</span>  
           <span class="skill-pill accent">WordPress</span>
-          <span class="skill-pill">HTML/CSS/JS</span>
+          <span class="skill-pill">Angular JS</span>
+          <span class="skill-pill accent">HTML/CSS</span>
           <span class="skill-pill">Canva</span>
+          <span class="skill-pill accent">Guide Flow</span>
           <span class="skill-pill">AI Tools</span>
+          <span class="skill-pill accent">Java Script</span>
         </div>
         <hr class="hc-divider"/>
         <div class="hc-avail"><span class="pulse"></span>Available for new opportunities</div>
@@ -333,7 +342,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);padding
     <span class="section-label fade-up">Selected Work</span>
     <h2 class="section-title fade-up">Projects that speak<br><em style="color:var(--accent)">for themselves.</em></h2>
     <div class="work-grid">
-      <div class="work-card featured fade-up">
+      <div class="work-card fade-up">
         <div class="wc-thumb t1">
           <span style="font-size:clamp(2.5rem,8vw,4rem);font-family:'Playfair Display',serif;font-weight:900;color:rgba(255,255,255,0.12);letter-spacing:-0.04em">UI/UX</span>
           <span class="wc-label">Featured Project</span>
@@ -375,13 +384,14 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.06);padding
     <span class="section-label fade-up">Toolkit</span>
     <h2 class="section-title fade-up">Skills &amp; Technologies</h2>
     <div class="skills-grid fade-up">
-      <div class="skill-card"><span class="sk-icon">⚛️</span><div class="sk-name">React JS</div><div class="sk-level">Advanced</div></div>
-      <div class="skill-card"><span class="sk-icon">🔷</span><div class="sk-name">Angular JS</div><div class="sk-level">Advanced</div></div>
+      <div class="skill-card"><span class="sk-icon">⚛️</span><div class="sk-name">React JS</div><div class="sk-level">Basic(UI)</div></div>
+      <div class="skill-card"><span class="sk-icon">🔷</span><div class="sk-name">Angular JS</div><div class="sk-level">Basic(UI)</div></div>
       <div class="skill-card"><span class="sk-icon">🎨</span><div class="sk-name">Figma</div><div class="sk-level">Expert</div></div>
-      <div class="skill-card"><span class="sk-icon">🌐</span><div class="sk-name">WordPress</div><div class="sk-level">Advanced</div></div>
+      <div class="skill-card"><span class="sk-icon">🌐</span><div class="sk-name">WordPress</div><div class="sk-level">Expert</div></div>
       <div class="skill-card"><span class="sk-icon">📄</span><div class="sk-name">HTML / CSS</div><div class="sk-level">Expert</div></div>
       <div class="skill-card"><span class="sk-icon">✨</span><div class="sk-name">JavaScript</div><div class="sk-level">Advanced</div></div>
       <div class="skill-card"><span class="sk-icon">🖌️</span><div class="sk-name">Canva</div><div class="sk-level">Expert</div></div>
+      <div class="skill-card"><span class="sk-icon">✨</span><div class="sk-name">Guide Flow</div><div class="sk-level">Expert</div></div>
       <div class="skill-card"><span class="sk-icon">🤖</span><div class="sk-name">AI Tools</div><div class="sk-level">Proficient</div></div>
     </div>
   </div>
